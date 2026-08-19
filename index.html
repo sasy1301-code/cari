@@ -645,7 +645,7 @@ ul{margin:0;padding:0;list-style:none}
 .f-form button:hover{background:transparent;color:var(--ink)}
 
 .f-bottom-wrap{background:#141210;margin-top:8px}
-.f-bottom{padding:20px 0;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.f-bottom{padding:20px 0;display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;text-align:center}
 .f-bottom p{font-size:12.5px;color:rgba(243,239,232,.62)}
 .pays{display:flex;gap:8px;align-items:center}
 .pay{width:42px;height:27px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:3px;display:grid;place-items:center;font-size:8px;letter-spacing:.06em;color:rgba(243,239,232,.78)}
@@ -654,12 +654,17 @@ ul{margin:0;padding:0;list-style:none}
 }
 @media(max-width:860px){
   .f-info{grid-template-columns:1fr;gap:34px}
+  .f-brand{text-align:center}
+  .f-brand .logo{text-align:center}
+  .f-brand .logo img{margin:0 auto}
+  .f-brand p{margin-inline:auto;max-width:330px}
+  .socials{justify-content:center}
 }
 @media(max-width:640px){
-  .f-cols{grid-template-columns:repeat(3,1fr);column-gap:10px;row-gap:0;justify-content:stretch}
-  .f-col{justify-content:flex-start;gap:2px;height:auto;min-width:0}
-  .f-col h4{font-size:11px;letter-spacing:.08em;margin-bottom:10px}
-  .f-col a{font-size:12px;white-space:normal;padding:3px 0;line-height:1.45}
+  .f-cols{grid-template-columns:repeat(3,1fr);column-gap:8px;row-gap:0;justify-content:stretch}
+  .f-col{justify-content:flex-start;align-items:center;text-align:center;gap:2px;height:auto;min-width:0}
+  .f-col h4{font-size:11px;letter-spacing:.08em;margin-bottom:10px;text-align:center}
+  .f-col a{font-size:12px;white-space:normal;padding:3px 0;line-height:1.45;text-align:center}
   .f-form{grid-template-columns:1fr}
 }
 
@@ -1452,9 +1457,6 @@ html[dir="rtl"] .mmenu{--mx:100%}
     <div class="wrap">
       <div class="f-bottom">
         <p>© 2026 Master Gold · The art of jewelry · כל הזכויות שמורות</p>
-        <div class="pays">
-          <span class="pay">VISA</span><span class="pay">MC</span><span class="pay">AMEX</span><span class="pay">PAYPAL</span><span class="pay">BIT</span>
-        </div>
       </div>
     </div>
   </div>
