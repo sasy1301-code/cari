@@ -796,7 +796,13 @@ html[dir="rtl"] .mmenu{--mx:100%}
 .crumbs span{margin:0 7px;opacity:.5}
 
 .pd{display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:start;padding-bottom:70px}
-.pd-gallery{display:grid;gap:12px}
+.pd-gallery{display:flex;flex-direction:column;gap:12px}
+.pd-gallery > .pd-slides{display:contents}
+/* בדסקטופ: הווידאו יושב בין תמונת התקריב לתמונת האווירה */
+.pd-slides > figure:nth-child(1){order:1}
+.pd-slides > figure:nth-child(2){order:2}
+.pd-gallery > .pd-video{order:3}
+.pd-slides > figure:nth-child(3){order:4}
 .pd-gallery figure{margin:0;position:relative;background:var(--beige-50);overflow:hidden}
 .pd-gallery img{width:100%;height:auto;display:block}
 .pd-gallery .swap{position:relative}
@@ -938,17 +944,19 @@ html[dir="rtl"] .mmenu{--mx:100%}
 .pd-thumbs{display:none}
 @media(max-width:980px){
   .pd-gallery{gap:10px}
-  .pd-gallery .pd-slides{position:relative;aspect-ratio:1/1;background:var(--beige-50);overflow:hidden}
+  .pd-gallery > .pd-slides{display:block;order:1;position:relative;aspect-ratio:1/1;background:var(--beige-50);overflow:hidden}
+  .pd-gallery > .pd-thumbs{order:2}
+  .pd-gallery > .pd-video{order:3}
   .pd-gallery .pd-slides > figure{
     position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .35s ease;
-    aspect-ratio:auto;margin:0;
+    aspect-ratio:auto;margin:0;order:initial;
   }
   .pd-gallery .pd-slides > figure.on{opacity:1;visibility:visible}
   .pd-gallery .pd-slides > figure > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .pd-gallery .pd-slides > figure.swap{aspect-ratio:auto}
   .pd-gallery .pd-slides > figure.pd-video{aspect-ratio:auto}
 
-  .pd-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .pd-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
   .pd-thumb{
     position:relative;aspect-ratio:1/1;padding:0;overflow:hidden;
     background:var(--beige-50);border:1px solid var(--line);transition:border-color .25s;
@@ -1009,7 +1017,7 @@ html[dir="rtl"] .mmenu{--mx:100%}
 .card .price.c-price .now{color:var(--ink);font-size:17px;font-weight:600}
 .card .price.c-price .old{font-size:13.5px}
 
-.c-more{text-align:center;margin-top:50px}
+.c-more{text-align:center;margin:50px 0 60px}
 /* בעמוד הקטגוריה הלב גלוי תמיד */
 .c-badges ~ .wish{opacity:1;transform:none}
 
@@ -1212,12 +1220,12 @@ html[dir="rtl"] .mmenu{--mx:100%}
       <ul class="nav">
         <li><a href="index.html">דף הבית</a></li>
         <li><a href="https://mastergold.co.il/%d7%90%d7%95%d7%93%d7%95%d7%aa%d7%99%d7%a0%d7%95/">אודותינו</a></li>
-        <li><a href="https://mastergold.co.il/%d7%aa%d7%9b%d7%a9%d7%99%d7%98%d7%99%d7%9d/">תכשיטים</a>
+        <li><a href="category.html">תכשיטים</a>
           <div class="mega">
-            <a href="product.html">טבעות</a>
-            <a href="product.html">שרשראות</a>
-            <a href="product.html">עגילים</a>
-            <a href="product.html">צמידים</a>
+            <a href="category.html">טבעות</a>
+            <a href="category.html">שרשראות</a>
+            <a href="category.html">עגילים</a>
+            <a href="category.html">צמידים</a>
           </div></li>
         <li><a href="https://mastergold.co.il/%d7%a6%d7%95%d7%a8-%d7%a7%d7%a9%d7%a8/">צור קשר</a></li>
         <li><a href="https://mastergold.co.il/%d7%9e%d7%a1%d7%a4%d7%a8%d7%99%d7%9d-%d7%a2%d7%9c%d7%99%d7%a0%d7%95/">מספרים עלינו</a></li>
@@ -1453,8 +1461,36 @@ html[dir="rtl"] .mmenu{--mx:100%}
   <div class="c-more"><button class="btn btn-ghost" type="button">טען עוד פריטים</button></div>
 </div>
 
+
+<!-- ========== סטריפ יעוץ ========== -->
+<section class="helpbar">
+  <div class="wrap">
+    <div class="helpbar-in">
+      <div>
+        <h3><span>אנו זמינים לכל שאלה! ליועץ מקצועי חייגו:</span> <a href="tel:0776707347" dir="ltr">077-6707347</a></h3>
+        <p>רוצים לקנות טבעת? לכל השאלות דברו עם נציג השירות</p>
+      </div>
+      <div class="help-icons">
+        <a class="phone" href="tel:0776707347" aria-label="חיוג">
+          <svg viewBox="0 0 24 24"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 005.5 5.5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A16 16 0 014.5 6.2 2 2 0 016.5 4z"/></svg>
+        </a>
+        <a href="https://wa.me/972000000000" aria-label="וואטסאפ">
+          <svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 01-11.8 7L4 20l1.1-4A8 8 0 1120 12z"/><path d="M9.4 9.6c.6 2 2.2 3.6 4.2 4.2l1-1 1.6.8-.4 1.4c-2.9.4-5.9-2.6-6.6-6.4l1.4-.4z"/></svg>
+        </a>
+        <a href="#" aria-label="פייסבוק">
+          <svg viewBox="0 0 24 24"><path d="M14 8h2.5V5H14a4 4 0 00-4 4v2H8v3h2v7h3v-7h2.5l.5-3H13V9a1 1 0 011-1z"/></svg>
+        </a>
+        <a href="#" aria-label="אינסטגרם">
+          <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".9" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ===== רצועת אמון ===== -->
-<section class="trust" style="margin-top:70px">
+<section class="trust">
   <div class="wrap">
     <div class="trust-grid">
       <div class="trust-item">
@@ -1498,10 +1534,10 @@ html[dir="rtl"] .mmenu{--mx:100%}
         <div class="f-cols">
           <div class="f-col">
             <h4>קנייה</h4>
-            <a href="product.html">טבעות</a>
-            <a href="product.html">שרשראות</a>
-            <a href="product.html">עגילים</a>
-            <a href="product.html">צמידים</a>
+            <a href="category.html">טבעות</a>
+            <a href="category.html">שרשראות</a>
+            <a href="category.html">עגילים</a>
+            <a href="category.html">צמידים</a>
             <a href="product.html">טבעות אירוסין</a>
             <a href="product.html">צמיד טניס</a>
           </div>
@@ -1587,7 +1623,7 @@ html[dir="rtl"] .mmenu{--mx:100%}
   <button class="icon-btn close" onclick="closeAll()" aria-label="סגירה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <a href="index.html">דף הבית</a>
   <a href="https://mastergold.co.il/%d7%90%d7%95%d7%93%d7%95%d7%aa%d7%99%d7%a0%d7%95/">אודותינו</a>
-  <a href="https://mastergold.co.il/%d7%aa%d7%9b%d7%a9%d7%99%d7%98%d7%99%d7%9d/">תכשיטים</a>
+  <a href="category.html">תכשיטים</a>
   <a href="https://mastergold.co.il/%d7%a6%d7%95%d7%a8-%d7%a7%d7%a9%d7%a8/">צור קשר</a>
   <a href="https://mastergold.co.il/%d7%9e%d7%a1%d7%a4%d7%a8%d7%99%d7%9d-%d7%a2%d7%9c%d7%99%d7%a0%d7%95/">מספרים עלינו</a>
   <a href="https://mastergold.co.il/regulations/">תקנון</a>
